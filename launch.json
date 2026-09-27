@@ -1,0 +1,22 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "LaunchToken",
+    "name": "Noughts",
+    "symbol": "NGHT",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "TicTacToeWager",
+      "constructorArgs": ["$token"]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Sepolia test game with no real value. LaunchToken is defined in src/LaunchToken.sol and takes no constructor arguments. TicTacToeWager is defined in src/TicTacToeWager.sol; its sole constructor argument is the launch token address, stored immutably and exposed by token(). The application needs no NGHT balance at deployment, owner or initialization calls. Players obtain NGHT by swapping Sepolia ETH in the factory-seeded launch pool, approve NGHT stakes and collect credited payouts through withdraw(). The pool pairs with native ETH and has no hook. initialPrice is decimal sqrtPriceX96; a pinned policy specifying initialMarketCapWei determines the effective opening price. The factory supplies the LP and MerkleDistributor. Policy, signed artifact linkage, admission and deployment are handled by services."
+}
